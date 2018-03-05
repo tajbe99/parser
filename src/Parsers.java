@@ -35,4 +35,73 @@ public class Parsers {
         Matcher match = regular.matcher(uRL);
         return match.matches();
     }
+
+    public static boolean parseDate_dd_mm_yyyy(String date){
+        Pattern regular = Pattern.compile("(([0-2]?[1-9])|([3][0,1])|10|20|30)-" +
+                "(Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec)-[0-9]{4}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_dd_mmmm_yy(String date){
+        Pattern regular = Pattern.compile("(([0-2]?[1-9])|([3][0,1])|10|20|30)-" +
+                "(January|February|March|April|May|June|July|August|September|October|November|December)-[0-9]{2}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+
+    public static boolean parseDate_mmmm_dd_yy(String date){
+        Pattern regular = Pattern.compile("(Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec)" +
+                "-(([0-2]?[1-9])|([3][0,1])|10|20|30)-[0-9]{2}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_weekday_dth_mmmm_yyyy(String date){
+        Pattern regular = Pattern.compile("(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)[,]" +
+                "\\s(([0-2]?[1-9])|([3][0,1])|10|20|30)\\sof\\s" +
+                "(January|February|March|April|May|June|July|August|September|October|November|December)" +
+                "\\s[0-9]{4}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_dd_mmm_yyyy_time(String date){
+        Pattern regular = Pattern.compile("(([0-2]?[1-9])|([3][0,1])|10|20|30)-" +
+                "(Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec)-[0-9]{4}\\s" +
+                "([0-1][0-9]|[2][0-4]):[0-6][0-6]:[0-6][0-6][.]([0-9][0-9]|100)");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_yyyy(String date){
+        Pattern regular = Pattern.compile("[0-9]{4}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_yy(String date){
+        Pattern regular = Pattern.compile("[0-9]{2}");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_time24(String date){
+        Pattern regular = Pattern.compile("([0-1][0-9]|[2][0-4]):[0-6][0-6]:[0-6][0-6]");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_weakday(String date){
+        Pattern regular = Pattern.compile("Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
+
+    public static boolean parseDate_mmm_yy(String date){
+        Pattern regular = Pattern.compile("(Jan|Feb|Mar|Apr|May|June|July|Aug|Sept|Oct|Nov|Dec)-[0-9]?[1-9][0]?");
+        Matcher match = regular.matcher(date);
+        return match.matches();
+    }
 }
